@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37710.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shmup", "Shmup.csproj", "{E16B0436-2AF5-47D4-AC7E-43BCCF60401D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E16B0436-2AF5-47D4-AC7E-43BCCF60401D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16B0436-2AF5-47D4-AC7E-43BCCF60401D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16B0436-2AF5-47D4-AC7E-43BCCF60401D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16B0436-2AF5-47D4-AC7E-43BCCF60401D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C18A82B-B5AF-4E99-872E-D1F463D6955E}
+	EndGlobalSection
+EndGlobal
