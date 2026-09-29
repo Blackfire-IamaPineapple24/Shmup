@@ -1,6 +1,6 @@
 <img src="prototype2.jpg" width="300">
 # Shmup
-
+-
 For our second MonoGame project, we'll make a side-scrolling shoot-em-up. We'll build this up over a couple of weeks.
 
 - We will set the window size to be 1280 × 720 or 1920 × 1080
