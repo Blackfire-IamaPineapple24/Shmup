@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Shmup
 {
@@ -8,6 +9,11 @@ namespace Shmup
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        public Texture2D _backgroundTxr, _saucerTxr, _missileTxr;
+        public Rectangle _screenBounds = new(0, 0, 1280, 720);
+
+        public List<Sprite> _spriteList = [];
 
         public Game1()
         {
@@ -18,7 +24,10 @@ namespace Shmup
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            _graphics.PreferredBackBufferWidth = _screenBounds.Width;
+            _graphics.PreferredBackBufferHeight = _screenBounds.Height;
+            //_graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -27,24 +36,28 @@ namespace Shmup
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _backgroundTxr = Content.Load<Texture2D>("background");
+            _saucerTxr = Content.Load<Texture2D>("saucer");
+            _missileTxr = Content.Load<Texture2D>("missile");
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (_spriteList.Count == 0)
+            {
+                _spriteList.Add(new Sprite(_backgroundTxr, _screenBounds.Location.ToVector2(), _screenBounds.Size.ToVector2()));
+            }
 
-            // TODO: Add your update logic here
+            _spriteList.ForEach(eachSprite => eachSprite.Update(gameTime));
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            _spriteList.ForEach(eachSprite => eachSprite.Draw(_spriteBatch));
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

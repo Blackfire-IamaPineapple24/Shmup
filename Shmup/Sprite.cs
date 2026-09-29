@@ -22,7 +22,7 @@ namespace Shmup
             _size = size;
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             _drawBounds = new(_position.ToPoint(), _size.ToPoint());
         }
