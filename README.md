@@ -1,7 +1,6 @@
-<img src="prototype2.jpg" width="300">
 # Shmup
----
 
+<img src="prototype2.jpg" width="300">
 
 For our second MonoGame project, we'll make a side-scrolling shoot-em-up. We'll build this up over a couple of weeks.
 
