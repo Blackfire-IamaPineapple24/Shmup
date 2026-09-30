@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Shmup
 {
-    internal class SpriteMissile : Sprite
+    public class SpriteMissile : Sprite
     {
+        private static Random rng = new Random();
+
         public SpriteMissile(Texture2D texture, Vector2 position, Vector2 size, Vector2? origin = null) : base(texture, position, size, origin) { }
 
         public SpriteMissile(Texture2D texture, Rectangle screenBounds) : base(texture, new(screenBounds.Width, (float)rng.NextDouble() * screenBounds.Height), texture.Bounds.Size.ToVector2(), new(0f, texture.Bounds.Center.Y)) {}
@@ -17,6 +19,9 @@ namespace Shmup
         public override void Update(GameTime gameTime)
         {
             _position.X -= 10f;
+
+            if (_position.X < -_texture.Width) _isDead = true;
+
             base.Update(gameTime);
         }
     }

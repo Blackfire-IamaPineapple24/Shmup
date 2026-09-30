@@ -13,6 +13,7 @@ namespace Shmup
         public Texture2D _texture;
         public Rectangle _drawBounds;
         public Vector2 _position, _size, _origin;
+        public bool _isDead;
 
         public Sprite(Texture2D texture, Vector2 position, Vector2 size, Vector2? origin = null)
         {
@@ -20,6 +21,7 @@ namespace Shmup
             _origin = origin ?? Vector2.Zero;
             _position = position;
             _size = size;
+            _isDead = false;
         }
 
         public virtual void Update(GameTime gameTime)

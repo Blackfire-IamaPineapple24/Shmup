@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Shmup
 {
@@ -9,11 +11,15 @@ namespace Shmup
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Random rng = new();
 
         public Texture2D _backgroundTxr, _saucerTxr, _missileTxr;
         public Rectangle _screenBounds = new(0, 0, 1280, 720);
 
         public List<Sprite> _spriteList = [];
+
+        private int _maxMissiles = 16;
+        private int _minMissiles = 8;
 
         public Game1()
         {
@@ -48,7 +54,16 @@ namespace Shmup
                 _spriteList.Add(new Sprite(_backgroundTxr, _screenBounds.Location.ToVector2(), _screenBounds.Size.ToVector2()));
             }
 
+            if (_spriteList.OfType<SpriteMissile>().Count() < _minMissiles)
+            {
+                if (rng.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 4.0)
+                {
+                    _spriteList.Add(new SpriteMissile(_missileTxr, _screenBounds));
+                }
+            }
+
             _spriteList.ForEach(eachSprite => eachSprite.Update(gameTime));
+            _spriteList.RemoveAll(deadSprites => deadSprites._isDead);
 
             base.Update(gameTime);
         }
