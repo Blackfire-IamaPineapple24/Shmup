@@ -102,6 +102,11 @@ namespace Shmup
                 }    
             }
 
+            if (!_player._isDead)
+            {
+                _score += _spriteList.OfType<SpriteMissile>().Where(eachSprite => eachSprite._position.X < -eachSprite._texture.Width).Count();
+            }
+
             _spriteList.RemoveAll(deadSprites => deadSprites._isDead);
 
             base.Update(gameTime);
